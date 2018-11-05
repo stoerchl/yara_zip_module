@@ -14,11 +14,17 @@ The installation of the module should be pretty simple, but yara has to be built
 	yara_zip_module/modules/zip.c --> yara/libyara/modules/zip.c
 
 3. Edit the file yara/libyara/Makefile.am and add the module as well as the miniz library:
+
 	MODULES += modules/zip.c
+
 	yarainclude_HEADERS = include/yara/miniz.h
+	
 	libyara_la_SOURCES = miniz.c
+	
 4. Add the module to the module_list file in the modules folder:
+	
 	MODULE(zip)
+	
 5. Now you can build yara by executing the make command inside the root folder.
 
 More information can be found here: https://yara.readthedocs.io/en/v3.7.0/writingmodules.html
@@ -44,8 +50,10 @@ If the given string was found, then the return value of the `has_string` functio
 
 ## Thanks to
 This module would not be working without this data compression library:
+
 https://github.com/richgel999/miniz/
 
 And without the yara project there obviously would have been no new yara module ;-)
+
 https://github.com/VirusTotal/yara
 
