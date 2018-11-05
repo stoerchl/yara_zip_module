@@ -7,6 +7,7 @@ The installation of the module should be pretty simple, but yara has to be built
 1. Clone the yara repository (https://github.com/VirusTotal/yara)
 2. Copy yara_zip_modules files into the libyara folder of the yara clone:
 	yara_zip_module/miniz.c --> yara/libyara/miniz.c
+	
 	yara_zip_module/include/yara/miniz.h --> yara/libyara/include/yara/miniz.h
 	yara_zip_module/modules/zip.c --> yara/libyara/modules/zip.c
 3. Edit the file yara/libyara/Makefile.am and add the module as well as the miniz library:
