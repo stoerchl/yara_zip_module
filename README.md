@@ -1,6 +1,6 @@
 # yara_zip_module
 
-This yara module can be used to search for strings inside a zip (.docx word file format) file. The files inside a zip are compressed and therefore not very well searchable for strings. This yara module unzips a given file in memory and searches for a given string.
+This yara module can be used to search for strings inside a zip (.docx word file format) file. The files inside a zip are compressed and therefore not very well searchable for strings. This yara module unzips a requested file in memory and searches for a given string.
 
 ## Installation
 The installation of the module should be pretty simple, but yara has to be built from source..
@@ -17,12 +17,12 @@ The installation of the module should be pretty simple, but yara has to be built
 	MODULE(zip)
 5. Now you can build yara by executing the make command inside the root folder.
 
-More information can be found here: https://yara.readthedocs.io/en/v3.4.0/writingmodules.html#accessing-scanned-data
+More information can be found here: https://yara.readthedocs.io/en/v3.7.0/writingmodules.html
 
 ## Usage
 
 The yara zip module has at the moment only one function `has_string(<file_inside_zip>, <search_string>)`
-Following an example of a yara rule using the `has_string()` function.
+Following an example of a yara rule using the `has_string(..)` function.
 If the given string was found, then the return value of the `has_string` function equals the offset inside the requested file.
 
 	import "zip"
