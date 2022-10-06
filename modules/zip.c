@@ -34,7 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 define_function(unpack)
 {
-    YR_SCAN_CONTEXT* module_context = scan_context();
+    YR_SCAN_CONTEXT* module_context = yr_scan_context();
     char* file_name = string_argument(1);
     char* search_string = string_argument(2);
     if(module_context != NULL)
@@ -51,20 +51,20 @@ define_function(unpack)
       if(!mz_zip_reader_init_mem(&zip, buffer, module_context->file_size, 0))
       { //Error: Could not init File from Memory
         mz_zip_reader_end(&zip);
-        return_integer(UNDEFINED);
+        return_integer(YR_UNDEFINED);
       }
 
       int file_index = mz_zip_reader_locate_file(&zip, file_name, 0, 0);
       if (file_index < 0)
       { //Error: Could not find File
         mz_zip_reader_end(&zip);
-        return_integer(UNDEFINED);
+        return_integer(YR_UNDEFINED);
       }
 
       if (!mz_zip_reader_file_stat(&zip, file_index, &stat))
       { //Error: Could not read Status
         mz_zip_reader_end(&zip);
-        return_integer(UNDEFINED);
+        return_integer(YR_UNDEFINED);
       }
 
       if (stat.m_uncomp_size<100*1024*1024)
@@ -73,7 +73,7 @@ define_function(unpack)
         if (!p) //Error: Could not read File to Heap
         {
           mz_zip_reader_end(&zip);
-          return_integer(UNDEFINED);
+          return_integer(YR_UNDEFINED);
         }
         else
         {
@@ -83,7 +83,7 @@ define_function(unpack)
         }
       }
     }
-    return_integer(UNDEFINED);
+    return_integer(YR_UNDEFINED);
 }
 
 begin_declarations;
