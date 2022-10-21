@@ -54,7 +54,7 @@ define_function(unpack)
         return_integer(YR_UNDEFINED);
       }
 
-      int file_index = mz_zip_reader_locate_file(&zip, file_name, 0, 0);
+      int file_index = mz_zip_reader_locate_file(&zip, file_name, 0, 0x0200);
       if (file_index < 0)
       { //Error: Could not find File
         mz_zip_reader_end(&zip);
